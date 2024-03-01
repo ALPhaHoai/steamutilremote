@@ -9,10 +9,9 @@ router.get('/', function (req, res, next) {
 })
 router.post('/', async function (req, res, next) {
   try {
-    const { method, params, cookies } = req.body
-    const user = new Steamutils(cookies)
-    const self = typeof user[method] === 'function' ? user : Steamutils
-    const result = await self[method].apply(self, params)
+    const { method, params, cookies, is_static } = req.body
+    const user = is_static ? Steamutils :  new Steamutils(cookies)
+    const result = await user[method].apply(user, params)
     res.json({ result })
   } catch (e) {
     console.error(e)
