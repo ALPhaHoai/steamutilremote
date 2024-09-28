@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "cookie-parser": "~1.4.6",
-    "debug": "~4.3.4",
-    "express": "~4.19.2",
+    "debug": "~4.3.7",
+    "express": "~4.21.0",
     "morgan": "~1.10.0",
-    "steamutils": "^1.4.3"
+    "steamutils": "^1.4.60"
   }
 }

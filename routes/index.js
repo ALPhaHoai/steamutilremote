@@ -5,7 +5,7 @@ const router = express.Router()
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.send('Hello World')
+  res.send('steamutilremote Hello World')
 })
 router.post('/', async function (req, res, next) {
   try {
