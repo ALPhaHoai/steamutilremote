@@ -1,5 +1,5 @@
 import express from 'express'
-import Steamutils from 'steamutils'
+import Steamutils, {ResponseError} from 'steamutils'
 
 const router = express.Router()
 
@@ -12,6 +12,9 @@ router.post('/', async function (req, res, next) {
     const { method, params, cookies, is_static } = req.body
     const user = is_static ? Steamutils :  new Steamutils(cookies)
     const result = await user[method].apply(user, params)
+    if (result instanceof ResponseError) {
+      return res.json({ error: true, message: result.message })
+    }
     res.json({ result })
   } catch (e) {
     console.error(e)
